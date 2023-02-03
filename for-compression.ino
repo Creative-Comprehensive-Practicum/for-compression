@@ -20,22 +20,23 @@ namespace globals{
 
 
 void setup() {
-  pinMode(static_cast<int>(constants::PIN::LED1), OUTPUT);
-  pinMode(static_cast<int>(constants::PIN::LED2), OUTPUT);
-  pinMode(static_cast<int>(constants::PIN::LED3), OUTPUT);
+  pinMode(static_cast<uint8_t>(constants::PIN::LED1), OUTPUT);
+  pinMode(static_cast<uint8_t>(constants::PIN::LED2), OUTPUT);
+  pinMode(static_cast<uint8_t>(constants::PIN::LED3), OUTPUT);
+  pinMode(static_cast<uint8_t>(constants::PIN::COMPRESS_BUTTON), INPUT);
 
-  digitalWrite(static_cast<int>(naga_constant::PIN::LED3), HIGH);//check is moving
+  digitalWrite(static_cast<uint8_t>(constants::PIN::LED3), HIGH);//check is moving
 }
 
 void loop() {
-  if(digitalRead(static_cast<int> (constants::PIN::COMPRESS_BUTTON))){
-    analogWrite(constants::PIN::PWM1, 255);//check direction of rotation
+  if(digitalRead(static_cast<uint8_t> (constants::PIN::COMPRESS_BUTTON))){
+    analogWrite(static_cast<uint8_t>(constants::PIN::PWM1), 255);//check direction of rotation
     delay(30000);//NEED TO MEASURE COMPRESSION TIME
 
-    analogWrite(constants::PIN::PWM1, 0);
+    analogWrite(static_cast<uint8_t>(constants::PIN::PWM1), 0);
     delay(3000);//wait time
 
-    analogWrite(constants::PIN::PWM2, 255);//check direction of rotation
+    analogWrite(static_cast<uint8_t>(constants::PIN::PWM2), 255);//check direction of rotation
     delay(30000);//NEED TO MEASURE COMPRESSION TIME
   }
 }
